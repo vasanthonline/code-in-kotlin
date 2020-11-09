@@ -1,0 +1,16 @@
+package com.example.http
+
+import org.springframework.web.bind.annotation.RestController
+import org.springframework.ui.Model
+import org.springframework.ui.set
+import org.springframework.web.bind.annotation.GetMapping
+
+@RestController
+class HtmlController {
+
+  @GetMapping("/")
+  fun hello(model: Model): String {
+    return "Hello world!"
+  }
+
+}
