@@ -12,9 +12,17 @@ class HtmlController {
   @Autowired
   lateinit var appProperties: AppProperties
 
+  @Autowired
+  lateinit var appPropertiesWired: AppPropertiesWired
+
   @GetMapping("/")
   fun hello(model: Model): String {
     return appProperties.message
+  }
+
+  @GetMapping("/wiredProperties")
+  fun helloWired(model: Model): String {
+    return appPropertiesWired.properties.message
   }
 
 }
