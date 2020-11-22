@@ -15,17 +15,18 @@ class CustomerController @Autowired constructor(
  
     @RequestMapping(method = [RequestMethod.GET])
     fun getAllCustomers(): List<CustomerDTO> {
-        return customerService.getCustomers().map { convertToDTO(it) }
+        return customerService.getCustomers().map { customerService.convertToDTO(it) }
     }
  
     @RequestMapping(value = ["{id}"], method = [RequestMethod.GET])
     fun getCustomerById(@PathVariable("id") id: Long): CustomerDTO {
-        return convertToDTO(customerService.getCustomerById(id))
+        return customerService.convertToDTO(customerService.getCustomerById(id))
     }
 
     @RequestMapping(method = [RequestMethod.POST])
     fun createCustomer(@RequestBody createRequest: CustomerDTO): CustomerDTO {
-        return convertToDTO(customerService.saveCustomer(convertToModel(createRequest)))
+        val customer:Customer = customerService.convertToModel(createRequest)
+        return customerService.convertToDTO(customerService.saveCustomer(customer))
     }
 
     @RequestMapping(value = ["{id}"], method = [RequestMethod.DELETE])
@@ -33,16 +34,4 @@ class CustomerController @Autowired constructor(
        return customerService.deleteCustomer(id)
     }
 
-    fun convertToDTO(customer: Customer): CustomerDTO {
-        val age:Long = ChronoUnit.DAYS.between(
-                customer.dateOfBirth,
-                LocalDate.now()
-        )
-        return CustomerDTO(customer.id, customer.name, age)
-    }
-
-    fun convertToModel(customerDTO: CustomerDTO): Customer {
-        val date: LocalDate = LocalDate.now().minusDays(customerDTO.age ?: 0)
-        return Customer(customerDTO.id, customerDTO.name, date)
-    }
 }
