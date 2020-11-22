@@ -7,7 +7,7 @@ import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 
 @RestController
-class HtmlController {
+class ExampleController {
 
   @Autowired
   lateinit var appProperties: AppProperties
@@ -16,12 +16,12 @@ class HtmlController {
   lateinit var appPropertiesWired: AppPropertiesWired
 
   @GetMapping("/")
-  fun hello(model: Model): String {
+  fun hello(): String {
     return appProperties.message
   }
 
   @GetMapping("/wiredProperties")
-  fun helloWired(model: Model): String {
+  fun helloWired(): String {
     return appPropertiesWired.properties.message
   }
 

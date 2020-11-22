@@ -6,12 +6,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Component
 @ConfigurationProperties(prefix="example")
-data class AppPropertiesWired(   
+data class AppPropertiesWired (
     var properties: ExamplePropertiesWired
 )
 
 @Component
 @ConfigurationProperties(prefix="properties")
-data class ExamplePropertiesWired(
+data class ExamplePropertiesWired (
     var message: String = ""
 )
