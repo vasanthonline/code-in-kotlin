@@ -4,12 +4,12 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table(name = "customer")
-data class Customer (
+@Table(name = "person")
+data class Person (
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
 
     var name: String = "",
-    var dateOfBirth: LocalDate? = null
+    var dateOfBirthInMs: Long = 0
 )
