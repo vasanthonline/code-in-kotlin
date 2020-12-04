@@ -6,7 +6,7 @@ Hands-on examples using Kotlin language
 ### [Spring hands-on](https://github.com/vasanthonline/kotlin-hands-on/tree/kotlin-server-side-spring)
 1. [HTTP](https://github.com/vasanthonline/kotlin-hands-on/tree/kotlin-server-side-spring/001-http)
 2. [Read from application.properties](https://github.com/vasanthonline/kotlin-hands-on/tree/kotlin-server-side-spring/002-read-properties)
-3. JPA model, service, repository and controller
+3. [Model, service, repository and controller](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-server-side-spring/003-crud)
 4. HTML templates - Mustache.
 5. Front end integration - React.
 6. Database versioning - Liquibase
