@@ -18,6 +18,7 @@
 
 ### Add the web-starer dependency
 The build a spring application for HTTP, a new dependency - `spring-boot-starter-web` is to be added. Go to `build.gradle.kts` and under dependencies section add the following:
+
 `implementation("org.springframework.boot:spring-boot-starter-web")`
 
 
