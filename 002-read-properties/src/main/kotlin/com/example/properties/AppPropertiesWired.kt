@@ -7,11 +7,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Component
 @ConfigurationProperties(prefix="example")
 data class AppPropertiesWired (
-    var properties: ExamplePropertiesWired
+    var exampleProperties: ExamplePropertiesWired
 )
 
 @Component
 @ConfigurationProperties(prefix="properties")
 data class ExamplePropertiesWired (
-    var message: String = ""
+    var message: String
 )
