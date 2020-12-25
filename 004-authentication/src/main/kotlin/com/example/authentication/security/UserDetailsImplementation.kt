@@ -1,4 +1,4 @@
-package com.example.authentication
+package com.example.authentication.security
 
 import com.example.authentication.service.UserService
 import org.springframework.beans.factory.annotation.Autowired

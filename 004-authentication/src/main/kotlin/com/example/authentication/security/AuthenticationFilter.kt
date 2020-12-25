@@ -1,4 +1,4 @@
-package com.example.authentication
+package com.example.authentication.security
 
 import org.json.JSONObject
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException

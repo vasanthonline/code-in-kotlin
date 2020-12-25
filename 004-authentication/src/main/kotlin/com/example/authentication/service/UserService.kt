@@ -5,7 +5,6 @@ import com.example.authentication.model.User
 import com.example.authentication.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.time.Instant
 import java.time.ZoneOffset
 
 @Service

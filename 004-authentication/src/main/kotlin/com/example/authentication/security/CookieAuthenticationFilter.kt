@@ -1,4 +1,4 @@
-package com.example.authentication
+package com.example.authentication.security
 
 import com.example.authentication.model.User
 import org.springframework.security.authentication.AuthenticationManager

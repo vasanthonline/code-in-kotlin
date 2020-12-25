@@ -1,6 +1,6 @@
 package com.example.authentication.controller
 
-import com.example.authentication.JwtUtils
+import com.example.authentication.security.JwtUtils
 import com.example.authentication.dto.UserDTO
 import com.example.authentication.model.User
 import com.example.authentication.service.UserService
@@ -22,6 +22,9 @@ class AuthController {
     @PostMapping(path = ["/signup"])
     @ResponseBody
     fun signup(@RequestBody userDTO: UserDTO): UserDTO? {
+        // As an example, we are generating a password here.
+        // In ideal applications, either the user is expected to input the password [or]
+        // the generated password is shared via email.
         val generatedPassword: String = UUID.randomUUID().toString().substring(0,10)
         val user: User = userService.convertToModel(userDTO, generatedPassword)
         return userService.convertToDTO(userService.saveUser(user))

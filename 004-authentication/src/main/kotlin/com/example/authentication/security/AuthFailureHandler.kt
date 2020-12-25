@@ -1,4 +1,4 @@
-package com.example.authentication
+package com.example.authentication.security
 
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.web.AuthenticationEntryPoint
