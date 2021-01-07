@@ -1,20 +1,28 @@
 package com.example.authentication.model
 
+import com.example.authentication.constants.AppConstants
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "users")
-data class User(
+@Table(name = "user_sessions")
+data class UserSession(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
 
-    val email: String = "",
-    val name: String = "",
-    val password: String = "",
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    val user:User? = null,
+
+    val token: String = "",
+
+    @Enumerated(EnumType.STRING)
+    var status: AppConstants.UserSessionStatus = AppConstants.UserSessionStatus.EXPIRED,
+
+    val expiry: Date = Date(),
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
@@ -24,4 +32,3 @@ data class User(
     @Temporal(TemporalType.TIMESTAMP)
     var updatedAt: Date = Date()
 )
-

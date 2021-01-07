@@ -1,5 +1,7 @@
 package com.example.authentication.security
 
+import com.example.authentication.service.UserService
+import com.example.authentication.service.UserSessionService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -22,6 +24,12 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit var jwtUtils: JwtUtils
 
+    @Autowired
+    lateinit var userService: UserService
+
+    @Autowired
+    lateinit var userSessionService: UserSessionService
+
     @Throws(Exception::class)
     override fun configure(httpSecurity: HttpSecurity) {
         httpSecurity
@@ -32,8 +40,8 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable()
-                .addFilter(AuthenticationFilter(authenticationManager(), jwtUtils))
-                .addFilter(CookieAuthenticationFilter(authenticationManager(), jwtUtils))
+                .addFilter(AuthenticationFilter(authenticationManager(), jwtUtils, userService, userSessionService))
+                .addFilter(CookieAuthenticationFilter(authenticationManager(), jwtUtils, userService, userSessionService))
                 .exceptionHandling().authenticationEntryPoint(authFailureHandler)
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

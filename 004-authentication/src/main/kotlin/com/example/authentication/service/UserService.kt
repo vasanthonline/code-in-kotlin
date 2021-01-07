@@ -3,17 +3,15 @@ package com.example.authentication.service
 import com.example.authentication.dto.UserDTO
 import com.example.authentication.model.User
 import com.example.authentication.repository.UserRepository
+import com.example.authentication.security.JwtUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.time.ZoneOffset
 
 @Service
 class UserService @Autowired constructor(
-        private val userRepository: UserRepository
+        private val userRepository: UserRepository,
+        private val jwtUtils: JwtUtils
 ) {
-    fun getPersons(): List<User> {
-        return userRepository.findAll().toList()
-    }
 
     fun getUserByEmail(email: String): User? {
         return userRepository.findByEmail(email)
@@ -23,8 +21,12 @@ class UserService @Autowired constructor(
         return userRepository.save(user)
     }
 
-    fun deleteUser(id: Long): Unit {
-        return userRepository.deleteById(id)
+    fun parseToken(token: String): User? {
+        return getUserByEmail(jwtUtils.parseToken(token) ?: "")
+    }
+
+    fun getTokenFromBearerToken(bearerToken: String): String? {
+        return jwtUtils.parseBearerToken(bearerToken)
     }
 
     fun convertToDTO(user: User): UserDTO {
