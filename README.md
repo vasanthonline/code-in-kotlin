@@ -10,6 +10,7 @@ Hands-on examples using Kotlin language
 4. [Authentication](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-server-side-spring/004-authentication)
 5. [Event Sourcing](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-server-side-spring/005-eventsourcing)
 
-### Big-data technologies
+### [Big-data technologies](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-big-data-tech)
 
-TODO
+1. [Kafka](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-big-data-tech/001-kafka)
+2. [Streaming with Spark and Cassandra](https://github.com/vasanthonline/code-in-kotlin/tree/kotlin-big-data-tech/002-spark-cassandra)
