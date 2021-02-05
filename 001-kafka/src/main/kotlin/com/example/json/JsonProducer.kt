@@ -1,6 +1,7 @@
 package com.example.json
 
 import com.example.Constants.jsonMapper
+import com.example.Constants.kafkaBrokerUrl
 import com.example.Constants.personsTopic
 import com.example.Person
 import com.github.javafaker.Faker
@@ -11,11 +12,11 @@ import org.apache.kafka.common.serialization.StringSerializer
 import org.apache.log4j.LogManager
 import java.util.*
 
-fun main(args: Array<String>) {
-    SimpleProducer("localhost:9092").produce(2)
+fun main() {
+    JsonProducer(kafkaBrokerUrl).produce(2)
 }
 
-class SimpleProducer(brokers: String) {
+class JsonProducer(brokers: String) {
 
     private val logger = LogManager.getLogger(javaClass)
     private val producer = createProducer(brokers)

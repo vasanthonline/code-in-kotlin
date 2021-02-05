@@ -1,5 +1,6 @@
 package com.example.spark
 
+import com.example.Constants.kafkaBrokerUrl
 import com.example.Constants.messagesTopic
 import com.github.javafaker.Faker
 import org.apache.kafka.clients.producer.KafkaProducer
@@ -10,7 +11,7 @@ import org.apache.log4j.LogManager
 import java.util.*
 
 fun main(args: Array<String>) {
-    SimpleProducer("localhost:9092").produce(2)
+    SimpleProducer(kafkaBrokerUrl).produce(2)
 }
 
 class SimpleProducer(brokers: String) {
@@ -33,7 +34,7 @@ class SimpleProducer(brokers: String) {
 
         val faker = Faker()
         while (true) {
-            val fakeMessage = faker.lorem().paragraph()
+            val fakeMessage = faker.lorem().words(5).joinToString(separator = " ")
             logger.info("Generated a message: $fakeMessage")
 
             val futureResult = producer.send(ProducerRecord(messagesTopic, fakeMessage))

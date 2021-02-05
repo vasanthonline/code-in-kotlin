@@ -1,10 +1,10 @@
 package com.example.json
 
 import com.example.Constants.jsonMapper
+import com.example.Constants.kafkaBrokerUrl
 import com.example.Constants.personsTopic
 import com.example.Person
 import com.fasterxml.jackson.module.kotlin.readValue
-import io.confluent.kafka.serializers.KafkaAvroDeserializer
 import org.apache.kafka.clients.consumer.Consumer
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
@@ -16,11 +16,11 @@ import java.time.ZoneId
 import java.util.*
 
 
-fun main(args: Array<String>) {
-    SimpleConsumer("localhost:9092", "http://localhost:8081").process()
+fun main() {
+    JsonConsumer(kafkaBrokerUrl, "http://localhost:8081").process()
 }
 
-class SimpleConsumer(brokers: String, schemaRegistryUrl: String) {
+class JsonConsumer(brokers: String, schemaRegistryUrl: String) {
     private val logger = LogManager.getLogger(javaClass)
     private val consumer = createConsumer(brokers, schemaRegistryUrl)
 
